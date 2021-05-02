@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "5.19.0",
+    junitVersion = "5.7.1",
+    ownerVersion = "1.0.12",
+    assertjVersion = "3.19.0"
+
+dependencies {
+    testImplementation("org.aeonbits.owner:owner:$ownerVersion")
+
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "org.assertj:assertj-core:$assertjVersion")
+
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}

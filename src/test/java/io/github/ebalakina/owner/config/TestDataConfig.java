@@ -2,9 +2,9 @@ package io.github.ebalakina.owner.config;
 
 import org.aeonbits.owner.Config;
 
+@Config.Sources("classpath:test_data.properties")
 public interface TestDataConfig extends Config {
 
-    @DefaultValue("https://github.com")
     @Key("base.url")
     String baseUrl();
 }

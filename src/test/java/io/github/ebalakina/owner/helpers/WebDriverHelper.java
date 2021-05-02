@@ -19,13 +19,13 @@ public class WebDriverHelper {
     }
 
     public static void configureDriver(String baseUrl) {
+        Configuration.baseUrl = baseUrl;
+        Configuration.browser = config.getBrowser().toString();
+        Configuration.browserVersion = config.getBrowserVersion();
+        Configuration.timeout = 4000;
+
         if (isRemote()) {
             Configuration.remote = config.getURL().toString();
-        } else {
-            Configuration.browser = config.getBrowser().toString();
-            Configuration.browserVersion = config.getBrowserVersion();
-            Configuration.baseUrl = baseUrl;
-            Configuration.timeout = 4000;
         }
     }
 }
